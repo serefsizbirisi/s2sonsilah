@@ -1,2 +1,2 @@
 # s2sonsilah
-S2 Son Silah basit paket alış verişi yapan örneği olmayan çalışan sunucu.
+Simple node.js tcp server emulator for S2 Son Silah game

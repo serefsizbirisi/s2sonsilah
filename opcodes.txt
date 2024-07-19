@@ -1,0 +1,1455 @@
+void __userpurge sub_100570D0(int a1@<ecx>, char a2@<sil>, unsigned int a3, char a4)
+{
+  char **v5; // eax
+  char *v6; // eax
+  char Buffer[20]; // [esp+4h] [ebp-14h] BYREF
+
+  if ( !*(_BYTE *)(a1 + 16) || !*(_BYTE *)(a1 + 19) )
+    return;
+  if ( (dword_10521920 & 1) == 0 )
+  {
+    dword_10521920 |= 1u;
+    dword_10521918 = 15;
+    dword_10521914 = 0;
+    LOBYTE(dword_10521904) = 0;
+    atexit(sub_1047DC20);
+  }
+  v5 = (char **)dword_10521904;
+  dword_10521914 = 0;
+  if ( (unsigned int)dword_10521918 < 0x10 )
+    v5 = &dword_10521904;
+  *(_BYTE *)v5 = 0;
+  if ( a4 )
+    sub_100018F0((int)&dword_10521904, "\t\t[GameServer -> Client] ", 0x19u);
+  else
+    sub_100018F0((int)&dword_10521904, "[Client -> GameServer] ", 0x17u);
+  if ( a3 <= 0x210101 )
+  {
+    if ( a3 == 2162945 )
+    {
+      sub_10009AA0("tPacket_NLaunch_NLock_SN_UserInfo", 0x21u);
+    }
+    else
+    {
+      switch ( a3 )
+      {
+        case 1114369u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_CQ_Login");
+          break;
+        case 1114370u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_SA_Login");
+          break;
+        case 1114385u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_CQ_JoyGameLogin");
+          break;
+        case 1114386u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_SA_JoyGameLogin");
+          break;
+        case 1114401u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_CN_NetmarbleLoginData");
+          break;
+        case 1114402u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_CN_NetmarbleLoginPCInfo");
+          break;
+        case 1114403u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_SA_NetmarbleLogin");
+          break;
+        case 1114404u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_CQ_Join");
+          break;
+        case 1114405u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_SA_Join");
+          break;
+        case 1114449u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_CQ_MenaLogin");
+          break;
+        case 1114450u:
+          sub_10009BF0("tPacket_NAccount_NIdentity_SA_MenaLogin");
+          break;
+        default:
+          goto LABEL_474;
+      }
+    }
+    goto LABEL_476;
+  }
+  if ( a3 <= 0x210201 )
+  {
+    if ( a3 == 2163201 )
+    {
+      sub_10009BF0("tPacket_NLaunch_NFactory_CQ_CreateUser");
+    }
+    else
+    {
+      switch ( a3 )
+      {
+        case 2162947u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_Record");
+          break;
+        case 2162949u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_RankingInfo");
+          break;
+        case 2162961u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_ItemList");
+          break;
+        case 2162963u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_SlotInfo");
+          break;
+        case 2162977u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_LockEnd");
+          break;
+        case 2162979u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_RecordMapList");
+          break;
+        case 2162993u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_ShotdownToYouth");
+          break;
+        case 2163009u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_NetCafeInfo");
+          break;
+        case 2163025u:
+          sub_10009BF0("tPacket_NLaunch_NLock_SN_ChatPunishInfo");
+          break;
+        case 2163026u:
+          sub_10009BF0("tPacket_NMatchup_NUser_SN_ChangeNickNameColor");
+          break;
+        default:
+          goto LABEL_474;
+      }
+    }
+    goto LABEL_476;
+  }
+  if ( a3 <= 0x240101 )
+  {
+    if ( a3 == 2359553 )
+    {
+      sub_10009BF0("tPacket_NHangar_NEquipment_CQ_Open");
+      goto LABEL_476;
+    }
+    if ( a3 > 0x220522 )
+    {
+      if ( a3 > 0x222401 )
+      {
+        if ( a3 > 0x223101 )
+        {
+          if ( a3 > 0x230104 )
+          {
+            switch ( a3 )
+            {
+              case 2294052u:
+                sub_10009BF0("tPacket_NBattle_NGame_SN_Kill");
+                break;
+              case 2294070u:
+                sub_10009BF0("tPacket_NBattle_NGame_SN_Bomb");
+                break;
+              case 2294082u:
+                sub_10009BF0("tPacket_NBattle_NGame_SN_FlexibleCapture");
+                break;
+              case 2294097u:
+                sub_10009BF0("tPacket_NBattle_NGame_SN_Captin");
+                break;
+              case 2294114u:
+                sub_10009BF0("tPacket_NBattle_NGame_SN_Escape");
+                break;
+              default:
+                goto LABEL_474;
+            }
+          }
+          else if ( a3 == 2294020 )
+          {
+            sub_10009BF0("tPacket_NBattle_NGame_SN_Revive");
+          }
+          else
+          {
+            switch ( a3 )
+            {
+              case 2240770u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_RegisterMatching");
+                break;
+              case 2240771u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_CompleteMatching");
+                break;
+              case 2240772u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_MatchingConditionList");
+                break;
+              case 2240785u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_CN_CancelMatching");
+                break;
+              case 2240786u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_CancelMatching");
+                break;
+              case 2240787u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_InitializeMatching");
+                break;
+              case 2240788u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_CN_BreakArenaRoom");
+                break;
+              case 2240789u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_BreakArenaRoom");
+                break;
+              case 2240790u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_InitializeArenaRoom");
+                break;
+              case 2240801u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_CQ_DetailView");
+                break;
+              case 2240802u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SA_DetailView");
+                break;
+              case 2240817u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_CN_ManualMatching");
+                break;
+              case 2240818u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_ManualMatching");
+                break;
+              case 2240819u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_ManualMatchingRequest");
+                break;
+              case 2240820u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_CN_ManualMatchingResponse");
+                break;
+              case 2240821u:
+                sub_10009BF0("tPacket_NMatchup_NQuickMatch_SN_ManualMatchingResponseFail");
+                break;
+              default:
+                goto LABEL_474;
+            }
+          }
+        }
+        else if ( a3 == 2240769 )
+        {
+          sub_10009BF0("tPacket_NMatchup_NQuickMatch_CN_RegisterMatching");
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 2237442u:
+              sub_10009BF0("tPacket_NTournament_NGame_SA_JoinTournamentList");
+              break;
+            case 2237443u:
+              sub_10009BF0("tPacket_NTournament_NGame_SN_JoinTournamentList");
+              break;
+            case 2237444u:
+              sub_10009BF0("tPacket_NTournament_NGame_SN_JoinClannerList");
+              break;
+            case 2237445u:
+              sub_10009BF0("tPacket_NTournament_NGame_CQ_TournamentUpdate");
+              break;
+            case 2237446u:
+              sub_10009BF0("tPacket_NTournament_NGame_SA_TournamentUpdate");
+              break;
+            case 2237457u:
+              sub_10009BF0("tPacket_NTournament_NGame_CQ_ProgressTournamentList");
+              break;
+            case 2237458u:
+              sub_10009BF0("tPacket_NTournament_NGame_SA_ProgressTournamentList");
+              break;
+            case 2237459u:
+              sub_10009BF0("tPacket_NTournament_NGame_SN_ProgressTournamentList");
+              break;
+            case 2237460u:
+              sub_10009BF0("tPacket_NTournament_NGame_CQ_ProgressTournament");
+              break;
+            case 2237461u:
+              sub_10009BF0("tPacket_NTournament_NGame_SA_ProgressTournament");
+              break;
+            case 2237462u:
+              sub_10009BF0("tPacket_NTournament_NGame_SN_ProgressTournament");
+              break;
+            case 2237473u:
+              sub_10009BF0("tPacket_NTournament_NGame_SN_ExecuteRoomFail");
+              break;
+            case 2237474u:
+              sub_10009BF0("tPacket_NTournament_NGame_SN_NoticeList");
+              break;
+            case 2237475u:
+              sub_10009BF0("tPacket_NTournament_NGame_SN_RewardList");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        goto LABEL_476;
+      }
+      if ( a3 == 2237441 )
+      {
+        sub_10009BF0("tPacket_NTournament_NGame_CQ_JoinTournamentList");
+        goto LABEL_476;
+      }
+      if ( a3 > 2236673 )
+      {
+        if ( a3 <= 2236948 )
+        {
+          if ( a3 == 2236948 )
+          {
+            sub_10009BF0("tPacket_NMatchup_NResult_SN_UserScore");
+          }
+          else
+          {
+            switch ( a3 )
+            {
+              case 2236674u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_ReadyButtonFail");
+                break;
+              case 2236675u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_CN_StartButton");
+                break;
+              case 2236676u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_StartButtonFail");
+                break;
+              case 2236689u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_BaseRoomInfo");
+                break;
+              case 2236690u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_BaseUserList");
+                break;
+              case 2236692u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_BattleInfo");
+                break;
+              case 2236705u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_ExchangeTeam");
+                break;
+              case 2236706u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_ExchangeRule");
+                break;
+              case 2236721u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_CN_ExitButton");
+                break;
+              case 2236722u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_ExitButton");
+                break;
+              case 2236737u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_CQ_ChangeWeapon");
+                break;
+              case 2236738u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SA_ChangeWeapon");
+                break;
+              case 2236739u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_ChangeWeapon");
+                break;
+              case 2236753u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_CQ_ItemUse");
+                break;
+              case 2236754u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SA_ItemUse");
+                break;
+              case 2236755u:
+                sub_10009BF0("tPacket_NMatchup_NPlay_SN_EndRoundPlayTime");
+                break;
+              default:
+                goto LABEL_474;
+            }
+          }
+          goto LABEL_476;
+        }
+        switch ( a3 )
+        {
+          case 2236961u:
+            sub_10009BF0("tPacket_NMatchup_NResult_SN_GameFinalResult");
+            goto LABEL_476;
+          case 2236993u:
+            sub_10009BF0("tPacket_NMatchup_NResult_SN_MapEventReward");
+            goto LABEL_476;
+          case 2237009u:
+            sub_10009BF0("tPacket_NMatchup_NResult_SN_PCRoomMileage");
+            goto LABEL_476;
+        }
+      }
+      else
+      {
+        if ( a3 == 2236673 )
+        {
+          sub_10009BF0("tPacket_NMatchup_NPlay_CN_ReadyButton");
+          goto LABEL_476;
+        }
+        if ( a3 > 2232578 )
+        {
+          if ( a3 <= 2232594 )
+          {
+            if ( a3 == 2232594 )
+            {
+              sub_10009BF0("tPacket_NMatchup_NInvite_SA_Together");
+            }
+            else
+            {
+              switch ( a3 )
+              {
+                case 2232579u:
+                  sub_10009BF0("tPacket_NMatchup_NInvite_SN_UserList");
+                  break;
+                case 2232581u:
+                  sub_10009BF0("tPacket_NMatchup_NInvite_SN_Invite");
+                  break;
+                case 2232583u:
+                  sub_10009BF0("tPacket_NMatchup_NInvite_SN_Reject");
+                  break;
+                case 2232593u:
+                  sub_10009BF0("tPacket_NMatchup_NInvite_CQ_Together");
+                  break;
+                default:
+                  goto LABEL_474;
+              }
+            }
+            goto LABEL_476;
+          }
+          switch ( a3 )
+          {
+            case 0x221401u:
+              sub_10009BF0("tPacket_NMatchup_NAdvertise_SN_Notice");
+              goto LABEL_476;
+            case 0x221501u:
+              sub_10009BF0("tPacket_NMatchup_NEvent_SN_MapEventInfo");
+              goto LABEL_476;
+            case 0x221502u:
+              sub_10009BF0("tPacket_NMatchup_NEvent_SN_EventMap");
+              goto LABEL_476;
+          }
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 2232578u:
+              sub_10009BF0("tPacket_NMatchup_NInvite_SA_UserList");
+              goto LABEL_476;
+            case 2229539u:
+              sub_10009BF0("tPacket_NMatchup_NChat_SN_DevCommandFail");
+              goto LABEL_476;
+            case 2229553u:
+              sub_10009BF0("tPacket_NMatchup_NChat_SN_ChatPunish");
+              goto LABEL_476;
+          }
+        }
+      }
+    }
+    else
+    {
+      if ( a3 == 2229538 )
+      {
+        sub_10009BF0("tPacket_NMatchup_NChat_CN_DevCommand");
+        goto LABEL_476;
+      }
+      if ( a3 > 2228737 )
+      {
+        if ( a3 <= 2229009 )
+        {
+          if ( a3 == 2229009 )
+          {
+            sub_10009BF0("tPacket_NMatchup_NTeam_CQ_Change");
+          }
+          else
+          {
+            switch ( a3 )
+            {
+              case 2228738u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_Create");
+                break;
+              case 2228739u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_Info");
+                break;
+              case 2228740u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_UpdateInfoToChannelUser");
+                break;
+              case 2228753u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_CQ_ChangeBoundary");
+                break;
+              case 2228754u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_ChangeBoundary");
+                break;
+              case 2228755u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_ChangeBoundary");
+                break;
+              case 2228757u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_CQ_ChangeOption");
+                break;
+              case 2228758u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_ChangeOption");
+                break;
+              case 2228759u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_ChangeOption");
+                break;
+              case 2228760u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_CQ_ChangeName");
+                break;
+              case 2228761u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_ChangeName");
+                break;
+              case 2228762u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_ChangeName");
+                break;
+              case 2228763u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_CQ_ChangePassword");
+                break;
+              case 2228764u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_ChangePassword");
+                break;
+              case 2228769u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_CQ_ChangeMapInfo");
+                break;
+              case 2228770u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_ChangeMapInfo");
+                break;
+              case 2228771u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_ChangeMapInfo");
+                break;
+              case 2228785u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_CQ_EnterUser");
+                break;
+              case 2228786u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_EnterUser");
+                break;
+              case 2228787u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_UserList");
+                break;
+              case 2228788u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_CQ_LeaveUser");
+                break;
+              case 2228789u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_LeaveUser");
+                break;
+              case 2228790u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_LeaveUser");
+                break;
+              case 2228791u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_CQ_CompulsionAway");
+                break;
+              case 2228792u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SA_CompulsionAway");
+                break;
+              case 2228793u:
+                sub_10009BF0("tPacket_NMatchup_NRoom_SN_UserColorNickInfo");
+                break;
+              default:
+                goto LABEL_474;
+            }
+          }
+          goto LABEL_476;
+        }
+        if ( a3 <= 2229249 )
+        {
+          if ( a3 == 2229249 )
+          {
+            sub_10009BF0("tPacket_NMatchup_NUser_SN_State");
+          }
+          else
+          {
+            switch ( a3 )
+            {
+              case 2229010u:
+                sub_10009BF0("tPacket_NMatchup_NTeam_SA_Change");
+                break;
+              case 2229011u:
+                sub_10009BF0("tPacket_NMatchup_NTeam_SN_Change");
+                break;
+              case 2229015u:
+                sub_10009BF0("tPacket_NMatchup_NTeam_CQ_ChangeLeader");
+                break;
+              case 2229017u:
+                sub_10009BF0("tPacket_NMatchup_NTeam_SN_ChangeLeader");
+                break;
+              case 2229018u:
+                sub_10009BF0("tPacket_NMatchup_NTeam_SN_ChangeTeamLeader");
+                break;
+              default:
+                goto LABEL_474;
+            }
+          }
+          goto LABEL_476;
+        }
+        if ( a3 > 2229281 )
+        {
+          switch ( a3 )
+          {
+            case 2229297u:
+              sub_10009BF0("tPacket_NMatchup_NUser_SN_ChangeTitle");
+              break;
+            case 2229505u:
+              sub_10009BF0("tPacket_NMatchup_NChat_NN_WaitRoom");
+              break;
+            case 2229506u:
+              sub_10009BF0("tPacket_NMatchup_NChat_NN_ChattingFail");
+              break;
+            case 2229507u:
+              sub_10009BF0("tPacket_NMatchup_NChat_NN_NotBattleTeam");
+              break;
+            case 2229509u:
+              sub_10009BF0("tPacket_NMatchup_NChat_NN_NotBattleAll");
+              break;
+            case 2229511u:
+              sub_10009BF0("tPacket_NMatchup_NChat_NN_BattleTeam");
+              break;
+            case 2229513u:
+              sub_10009BF0("tPacket_NMatchup_NChat_NN_BattleAll");
+              break;
+            case 2229520u:
+              sub_10009BF0("tPacket_NMatchup_NChat_NN_BattleTeamRadio");
+              break;
+            case 2229521u:
+              sub_10009BF0("tPacket_NMatchup_NChat_CQ_Whisper");
+              break;
+            case 2229523u:
+              sub_10009BF0("tPacket_NMatchup_NChat_SN_Whisper");
+              break;
+            default:
+              goto LABEL_474;
+          }
+          goto LABEL_476;
+        }
+        switch ( a3 )
+        {
+          case 2229281u:
+            sub_10009BF0("tPacket_NMatchup_NUser_SN_ChangeNickName");
+            goto LABEL_476;
+          case 2229265u:
+            sub_10009BF0("tPacket_NMatchup_NUser_SN_UserLevel");
+            goto LABEL_476;
+          case 2229266u:
+            sub_10009BF0("tPacket_NMatchup_NUser_SN_Record");
+            goto LABEL_476;
+        }
+      }
+      else
+      {
+        if ( a3 == 2228737 )
+        {
+          sub_10009BF0("tPacket_NMatchup_NRoom_CQ_Create");
+          goto LABEL_476;
+        }
+        if ( a3 > 2228481 )
+        {
+          switch ( a3 )
+          {
+            case 2228482u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SN_ChannelList");
+              break;
+            case 2228487u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SN_GroupList");
+              break;
+            case 2228488u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SN_ServerList");
+              break;
+            case 2228497u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_CQ_EnterUser");
+              break;
+            case 2228498u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SA_EnterUser");
+              break;
+            case 2228499u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SN_UserList");
+              break;
+            case 2228500u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_CQ_LeaveUser");
+              break;
+            case 2228501u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SA_LeaveUser");
+              break;
+            case 2228502u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SN_LeaveUser");
+              break;
+            case 2228513u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_CQ_SearchUser");
+              break;
+            case 2228514u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SA_SearchUser");
+              break;
+            case 2228529u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_CQ_AwayUser");
+              break;
+            case 2228530u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SA_AwayUser");
+              break;
+            case 2228561u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_CQ_ViewDetailInfo");
+              break;
+            case 2228562u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SA_ViewDetailInfo");
+              break;
+            case 2228563u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SN_ViewDetailInfo_Diary");
+              break;
+            case 2228564u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SN_ViewDetailInfo_Progress");
+              break;
+            case 2228577u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_CQ_QuickJoin");
+              break;
+            case 2228578u:
+              sub_10009BF0("tPacket_NMatchup_NChannel_SA_QuickJoin");
+              break;
+            default:
+              goto LABEL_474;
+          }
+          goto LABEL_476;
+        }
+        if ( a3 == 2228481 )
+        {
+          sub_10009BF0("tPacket_NMatchup_NChannel_SN_ServerInfo");
+          goto LABEL_476;
+        }
+        if ( a3 == 2163202 )
+        {
+          sub_10009BF0("tPacket_NLaunch_NFactory_SA_CreateUser");
+          goto LABEL_476;
+        }
+      }
+    }
+LABEL_474:
+    sub_10009AA0("INVALIED CODE = ", 0x10u);
+    sprintf(Buffer, "%x", a3);
+    sub_10009AA0(Buffer, strlen(Buffer));
+    goto LABEL_476;
+  }
+  if ( a3 <= 2359809 )
+  {
+    if ( a3 == 2359809 )
+    {
+      sub_10009BF0("tPacket_NHangar_NPurchase_CQ_Buy");
+    }
+    else
+    {
+      switch ( a3 )
+      {
+        case 2359554u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_SA_Open");
+          break;
+        case 2359555u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_CQ_Close");
+          break;
+        case 2359556u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_SA_Close");
+          break;
+        case 2359559u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_CQ_ChangePart");
+          break;
+        case 2359560u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_SA_ChangePart");
+          break;
+        case 2359585u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_CQ_ActiveItem");
+          break;
+        case 2359586u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_SA_ActiveItem");
+          break;
+        case 2359587u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_CQ_DeleteItem");
+          break;
+        case 2359588u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_SA_DeleteItem");
+          break;
+        case 2359589u:
+          sub_10009BF0("tPacket_Hanger_NEquiment_CQ_UseItem");
+          break;
+        case 2359590u:
+          sub_10009BF0("tPacket_Hanger_NEquiment_SA_UseItem");
+          break;
+        case 2359601u:
+          sub_10009BF0("tPacket_Hanger_NEquiment_SN_PackageItem");
+          break;
+        case 2359649u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_CQ_Unequip");
+          break;
+        case 2359650u:
+          sub_10009BF0("tPacket_NHangar_NEquipment_SA_Unequip");
+          break;
+        default:
+          goto LABEL_474;
+      }
+    }
+    goto LABEL_476;
+  }
+  if ( a3 > 3539202 )
+  {
+    if ( a3 > 3539969 )
+    {
+      if ( a3 <= 3540257 )
+      {
+        if ( a3 == 3540257 )
+        {
+          sub_10009BF0("tPacket_NGuild_NUpdate_CQ_ChangeClanMarkPreCheck");
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 3539970u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_Offline");
+              break;
+            case 3539988u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_AddClanner");
+              break;
+            case 3539990u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_ChangeTitle");
+              break;
+            case 3539991u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_ChangeColor");
+              break;
+            case 3540001u:
+              sub_10009BF0("tPacket_NGuild_NClanner_CQ_Delete");
+              break;
+            case 3540002u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SA_Delete");
+              break;
+            case 3540003u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_Secede");
+              break;
+            case 3540004u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_Kick");
+              break;
+            case 3540065u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_ClannerListInChannel");
+              break;
+            case 3540066u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_ClannerListInRoom");
+              break;
+            case 3540067u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_DeleteClannerInfoInChannel");
+              break;
+            case 3540068u:
+              sub_10009BF0("tPacket_NGuild_NClanner_SN_DeleteClannerInfoInRoom");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        goto LABEL_476;
+      }
+      if ( a3 <= 3540754 )
+      {
+        if ( a3 == 3540754 )
+        {
+          sub_10009BF0("tPacket_NGuild_NInvite_SA_Invite");
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 3540258u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SA_ChangeClanMarkPreCheck");
+              break;
+            case 3540259u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_CQ_ChangeClanMark");
+              break;
+            case 3540260u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SA_ChangeClanMark");
+              break;
+            case 3540261u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SN_ChangeClanMark");
+              break;
+            case 3540273u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_CQ_ChangeClanNamePreCheck");
+              break;
+            case 3540274u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SA_ChangeClanNamePreCheck");
+              break;
+            case 3540275u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_CQ_ChangeClanName");
+              break;
+            case 3540276u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SA_ChangeClanName");
+              break;
+            case 3540277u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SN_ChangeClanName");
+              break;
+            case 3540305u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SN_ChangeNickName");
+              break;
+            case 3540337u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SN_UpdateClanLevel");
+              break;
+            case 3540338u:
+              sub_10009BF0("tPacket_NGuild_NUpdate_SN_ResetClanRecord");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        goto LABEL_476;
+      }
+      if ( a3 <= 3541281 )
+      {
+        if ( a3 == 3541281 )
+        {
+          sub_10009BF0("tPacket_NGuild_NGame_CQ_Together");
+        }
+        else if ( a3 > 3541249 )
+        {
+          switch ( a3 )
+          {
+            case 3541250u:
+              sub_10009BF0("tPacket_NGuild_NGame_SN_Invite");
+              break;
+            case 3541251u:
+              sub_10009BF0("tPacket_NGuild_NGame_SN_InviteFail");
+              break;
+            case 3541265u:
+              sub_10009BF0("tPacket_NGuild_NGame_CN_Reject");
+              break;
+            case 3541266u:
+              sub_10009BF0("tPacket_NGuild_NGame_SN_Reject");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        else if ( a3 == 3541249 )
+        {
+          sub_10009BF0("tPacket_NGuild_NGame_CN_Invite");
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 3540755u:
+              sub_10009BF0("tPacket_NGuild_NInvite_SN_InviteToUser");
+              break;
+            case 3540756u:
+              sub_10009BF0("tPacket_NGuild_NInvite_CN_InviteReject");
+              break;
+            case 3540757u:
+              sub_10009BF0("tPacket_NGuild_NInvite_SN_InviteReject");
+              break;
+            case 3540993u:
+              sub_10009BF0("tPacket_NGuild_NBattle_SN_ClanRecordNotify");
+              break;
+            case 3540994u:
+              sub_10009BF0("tPacket_NGuild_NBattle_SN_ClannerRecordNotify");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        goto LABEL_476;
+      }
+      if ( a3 > 4326160 )
+      {
+        if ( a3 > 5308673 )
+        {
+          if ( a3 == 5308931 )
+          {
+            sub_10009BF0("tPacket_NInsperctor_NChannel_SN_AllNotify");
+            goto LABEL_476;
+          }
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 5308673u:
+              sub_10009BF0("tPacket_NInsperctor_NInit_SN_Login");
+              goto LABEL_476;
+            case 4326176u:
+              sub_10009BF0("tPacket_NHosting_NGuest_SN_UserExit");
+              goto LABEL_476;
+            case 4326177u:
+              sub_10009BF0("tPacket_NHosting_NGuest_SN_HostDisConnect");
+              goto LABEL_476;
+          }
+        }
+      }
+      else
+      {
+        if ( a3 == 4326160 )
+        {
+          sub_10009BF0("tPacket_NHosting_NGuest_SN_BattleStart");
+          goto LABEL_476;
+        }
+        if ( a3 > 0x420301 )
+        {
+          if ( a3 == 4326146 )
+          {
+            sub_10009BF0("tPacket_NHosting_NGuest_SN_HostingFail");
+            goto LABEL_476;
+          }
+          if ( a3 == 4326147 )
+          {
+            sub_10009BF0("tPacket_NHosting_NGuest_SN_HostConnect");
+            goto LABEL_476;
+          }
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 4326145u:
+              sub_10009BF0("tPacket_NHosting_NGuest_SN_Waiting");
+              goto LABEL_476;
+            case 3541282u:
+              sub_10009BF0("tPacket_NGuild_NGame_SA_Together");
+              goto LABEL_476;
+            case 4325889u:
+              sub_10009BF0("tPacket_NHosting_NHost_CanHostSyn");
+              goto LABEL_476;
+          }
+        }
+      }
+    }
+    else
+    {
+      if ( a3 == 3539969 )
+      {
+        sub_10009BF0("tPacket_NGuild_Nclanner_SN_Online");
+        goto LABEL_476;
+      }
+      if ( a3 <= 3539457 )
+      {
+        if ( a3 == 3539457 )
+        {
+          sub_10009BF0("tPacket_NGuild_NFactory_CQ_Search");
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 3539203u:
+              sub_10009BF0("tPacket_NGuild_NInit_SN_NotClanner");
+              break;
+            case 3539205u:
+              sub_10009BF0("tPacket_NGuild_NInit_SN_ClanServerDisconnect");
+              break;
+            case 3539217u:
+              sub_10009BF0("tPacket_NGuild_NInit_CQ_Open");
+              break;
+            case 3539218u:
+              sub_10009BF0("tPacket_NGuild_NInit_SA_Open");
+              break;
+            case 3539233u:
+              sub_10009BF0("tPacket_NGuild_NInit_CQ_Close");
+              break;
+            case 3539234u:
+              sub_10009BF0("tPacket_NGuild_NInit_SA_Close");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        goto LABEL_476;
+      }
+      if ( a3 <= 3539714 )
+      {
+        if ( a3 == 3539714 )
+        {
+          sub_10009BF0("tPacket_NGuild_NData_SN_ClannerList");
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 3539458u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SA_Search");
+              break;
+            case 3539473u:
+              sub_10009BF0("tPacket_NGuild_NFactory_CQ_CheckName");
+              break;
+            case 3539474u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SA_CheckName");
+              break;
+            case 3539521u:
+              sub_10009BF0("tPacket_NGuild_NFactory_CQ_SignupList");
+              break;
+            case 3539522u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SA_SignupList");
+              break;
+            case 3539537u:
+              sub_10009BF0("tPacket_NGuild_NFactory_CQ_Signup");
+              break;
+            case 3539538u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SA_Signup");
+              break;
+            case 3539539u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SN_Signup");
+              break;
+            case 3539553u:
+              sub_10009BF0("tPacket_NGuild_NFactory_CQ_Accept");
+              break;
+            case 3539554u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SA_Accept");
+              break;
+            case 3539555u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SN_Accept");
+              break;
+            case 3539556u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SN_SignerAccept");
+              break;
+            case 3539569u:
+              sub_10009BF0("tPacket_NGuild_NFactory_CQ_Delete");
+              break;
+            case 3539570u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SA_Delete");
+              break;
+            case 3539571u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SN_Delete");
+              break;
+            case 3539572u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SN_Reject");
+              break;
+            case 3539573u:
+              sub_10009BF0("tPacket_NGuild_NFactory_SN_SignerReject");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        goto LABEL_476;
+      }
+      if ( a3 == 3539715 )
+      {
+        sub_10009BF0("tPacket_NGuild_NData_SN_SignupList");
+        goto LABEL_476;
+      }
+    }
+    goto LABEL_474;
+  }
+  if ( a3 == 3539202 )
+  {
+    sub_10009BF0("tPacket_NGuild_NInit_SN_LoadFail");
+    goto LABEL_476;
+  }
+  if ( a3 > 3211777 )
+  {
+    if ( a3 > 3277057 )
+    {
+      if ( a3 > 3277313 )
+      {
+        if ( a3 <= 3277569 )
+        {
+          if ( a3 == 3277569 )
+          {
+            sub_10009BF0("tPacket_NMessanger_NGame_CN_Together");
+          }
+          else
+          {
+            switch ( a3 )
+            {
+              case 3277314u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_AddResult");
+                break;
+              case 3277315u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_AddRequestToTarget");
+                break;
+              case 3277316u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_CN_AddResponseFromTarget");
+                break;
+              case 3277317u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_AddResponseToTarget");
+                break;
+              case 3277318u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_AddNotifyToRequester");
+                break;
+              case 3277320u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_CQ_Delete");
+                break;
+              case 3277321u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SA_Delete");
+                break;
+              case 3277328u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_DeleteNotify");
+                break;
+              case 3277329u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_CN_Chat");
+                break;
+              case 3277330u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_Chat");
+                break;
+              case 3277331u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_Online");
+                break;
+              case 3277332u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_Offline");
+                break;
+              case 3277345u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_ChangeClanInfo");
+                break;
+              case 3277361u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_ChangeNickName");
+                break;
+              case 3277362u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_ChangeLevel");
+                break;
+              case 3277363u:
+                sub_10009BF0("tPacket_NMessanger_NFriend_SN_ChangeColor");
+                break;
+              default:
+                goto LABEL_474;
+            }
+          }
+          goto LABEL_476;
+        }
+        if ( a3 == 3277570 )
+        {
+          sub_10009BF0("tPacket_NMessanger_NGame_SN_Together");
+          goto LABEL_476;
+        }
+      }
+      else
+      {
+        switch ( a3 )
+        {
+          case 3277313u:
+            sub_10009BF0("tPacket_NMessanger_NFriend_CN_Add");
+            goto LABEL_476;
+          case 3277058u:
+            sub_10009BF0("tPacket_NMessanger_NData_SN_NotHaveFriend");
+            goto LABEL_476;
+          case 3277059u:
+            sub_10009BF0("tPacket_NMessanger_NData_SN_NotLoad");
+            goto LABEL_476;
+          case 3277060u:
+            sub_10009BF0("tPacket_NMessanger_NData_CN_Load");
+            goto LABEL_476;
+        }
+      }
+    }
+    else
+    {
+      if ( a3 == 3277057 )
+      {
+        sub_10009BF0("tPacket_NMessanger_NData_SN_FriendList");
+        goto LABEL_476;
+      }
+      if ( a3 > 3211793 )
+      {
+        if ( a3 > 3212033 )
+        {
+          switch ( a3 )
+          {
+            case 3212034u:
+              sub_10009BF0("tPacket_NMailBox_NGift_SN_Gift");
+              break;
+            case 3212054u:
+              sub_10009BF0("tPacket_NMailBox_NGift_CQ_ReceiveItem");
+              break;
+            case 3212055u:
+              sub_10009BF0("tPacket_NMailBox_NGift_SA_ReceiveItem");
+              break;
+            case 3212056u:
+              sub_10009BF0("tPacket_NMailBox_NGift_CQ_Refresh");
+              break;
+            case 3212058u:
+              sub_10009BF0("tPacket_NMailBox_NGift_CQ_Delete");
+              break;
+            case 3212059u:
+              sub_10009BF0("tPacket_NMailBox_NGift_SA_Delete");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        else if ( a3 == 3212033 )
+        {
+          sub_10009BF0("tPacket_NMailBox_NGift_SN_Info");
+        }
+        else
+        {
+          switch ( a3 )
+          {
+            case 3211794u:
+              sub_10009BF0("tPacket_NMailBox_NMail_SA_Send");
+              break;
+            case 3211795u:
+              sub_10009BF0("tPacket_NMailBox_NMail_SN_Send");
+              break;
+            case 3211796u:
+              sub_10009BF0("tPacket_NMailBox_NMail_CQ_ReadTag");
+              break;
+            case 3211797u:
+              sub_10009BF0("tPacket_NMailBox_NMail_SA_ReadTag");
+              break;
+            case 3211798u:
+              sub_10009BF0("tPacket_NMailBox_NMail_CQ_Refresh");
+              break;
+            case 3211800u:
+              sub_10009BF0("tPacket_NMailBox_NMail_CQ_Delete");
+              break;
+            case 3211801u:
+              sub_10009BF0("tPacket_NMailBox_NMail_SA_Delete");
+              break;
+            default:
+              goto LABEL_474;
+          }
+        }
+        goto LABEL_476;
+      }
+      if ( a3 == 3211793 )
+      {
+        sub_10009BF0("tPacket_NMailBox_NMail_CQ_Send");
+        goto LABEL_476;
+      }
+      if ( a3 == 3211778 )
+      {
+        sub_10009BF0("tPacket_NMailBox_NMail_SN_Mail");
+        goto LABEL_476;
+      }
+    }
+    goto LABEL_474;
+  }
+  if ( a3 == 3211777 )
+  {
+    sub_10009BF0("tPacket_NMailBox_NMail_SN_Info");
+    goto LABEL_476;
+  }
+  if ( a3 > 2361601 )
+  {
+    if ( a3 <= 2752769 )
+    {
+      if ( a3 == 2752769 )
+      {
+        sub_10009BF0("tPacket_NAchivement_NData_SN_BaseInfo");
+      }
+      else
+      {
+        switch ( a3 )
+        {
+          case 2361602u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SA_WinnerList");
+            break;
+          case 2361603u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SN_WinnerList");
+            break;
+          case 2361604u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SN_RewardItem");
+            break;
+          case 2361605u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SN_Winner");
+            break;
+          case 2361606u:
+            sub_10009BF0("tPacket_NHangar_NMarble_CQ_SelectGamble");
+            break;
+          case 2361607u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SA_SelectGamble");
+            break;
+          case 2361608u:
+            sub_10009BF0("tPacket_NHangar_NMarble_CQ_UsePointLuckyShop");
+            break;
+          case 2361609u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SA_UsePointLuckyShop");
+            break;
+          case 2361616u:
+            sub_10009BF0("tPacket_NHangar_NMarble_CQ_UseCashLuckyShop");
+            break;
+          case 2361617u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SA_UseCashLuckyShop");
+            break;
+          case 2361618u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SN_LuckyRewardItem");
+            break;
+          case 2361619u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SN_LuckyWinnerList");
+            break;
+          case 2361620u:
+            sub_10009BF0("tPacket_NHangar_NMarble_SN_LuckyWInner");
+            break;
+          default:
+            goto LABEL_474;
+        }
+      }
+      goto LABEL_476;
+    }
+    if ( a3 == 2752770 )
+    {
+      sub_10009BF0("tPacket_NAchivement_NData_SN_Diary");
+      goto LABEL_476;
+    }
+    if ( a3 == 2752771 )
+    {
+      sub_10009BF0("tPacket_NAchivement_NData_SN_Progress");
+      goto LABEL_476;
+    }
+    goto LABEL_474;
+  }
+  if ( a3 == 2361601 )
+  {
+    sub_10009BF0("tPacket_NHangar_NMarble_CQ_WinnerList");
+    goto LABEL_476;
+  }
+  if ( a3 <= 0x240601 )
+  {
+    if ( a3 == 2360833 )
+    {
+      sub_10009BF0("tPacket_NHangar_CQ_ChangeNickName");
+      goto LABEL_476;
+    }
+    if ( a3 > 0x240301 )
+    {
+      switch ( a3 )
+      {
+        case 0x240511u:
+          sub_10009BF0("tPacket_NHangar_NGift_CQ_Send");
+          goto LABEL_476;
+        case 0x240512u:
+          sub_10009BF0("tPacket_NHangar_NGift_SA_Send");
+          goto LABEL_476;
+        case 0x240513u:
+          sub_10009BF0("tPacket_NHangar_NGift_SN_Send");
+          goto LABEL_476;
+      }
+    }
+    else
+    {
+      switch ( a3 )
+      {
+        case 2360065u:
+          sub_10009BF0("tPacket_NHangar_NDestroy_SN_LimitItemDestory");
+          goto LABEL_476;
+        case 2359810u:
+          sub_10009BF0("tPacket_NHangar_NPurchase_SA_Buy");
+          goto LABEL_476;
+        case 2359811u:
+          sub_10009BF0("tPacket_NHangar_NPurchase_CQ_CashBuy");
+          goto LABEL_476;
+        case 2359812u:
+          sub_10009BF0("tPacket_NHangar_NPurchase_SA_CashBuy");
+          goto LABEL_476;
+      }
+    }
+    goto LABEL_474;
+  }
+  if ( a3 > 2361090 )
+  {
+    switch ( a3 )
+    {
+      case 2361091u:
+        sub_10009BF0("tPacket_NHangar_NRandomBox_SN_RewardItem");
+        goto LABEL_476;
+      case 2361345u:
+        sub_10009BF0("tPacket_NHangar_NConvert_CQ_MainSkinUse");
+        goto LABEL_476;
+      case 2361346u:
+        sub_10009BF0("tPacket_NHangar_NConvert_SA_MainSkinUse");
+        goto LABEL_476;
+    }
+    goto LABEL_474;
+  }
+  if ( a3 == 2361090 )
+  {
+    sub_10009BF0("tPacket_NHangar_NRandomBox_SA_RewardList");
+    goto LABEL_476;
+  }
+  if ( a3 > 2360836 )
+  {
+    if ( a3 == 2361089 )
+    {
+      sub_10009BF0("tPacket_NHangar_NRandomBox_CQ_RewardList");
+      goto LABEL_476;
+    }
+    goto LABEL_474;
+  }
+  if ( a3 == 2360836 )
+  {
+    sub_10009BF0("tPacket_NHangar_SA_CheckNickName");
+  }
+  else if ( a3 == 2360834 )
+  {
+    sub_10009BF0("tPacket_NHangar_SA_ChangeNickName");
+  }
+  else
+  {
+    sub_10009BF0("tPacket_NHangar_CQ_CheckNickName");
+  }
+LABEL_476:
+  SetConsoleTextAttribute(*(HANDLE *)(a1 + 8), 2u);
+  v6 = dword_10521904;
+  if ( (unsigned int)dword_10521918 < 16 )
+    v6 = (char *)&dword_10521904;
+  sub_10056E70(a1, v6, a2);
+  SetConsoleTextAttribute(*(HANDLE *)(a1 + 8), 0xFu);
+}

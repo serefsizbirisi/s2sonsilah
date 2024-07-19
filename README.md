@@ -54,3 +54,11 @@ Bu iki satır kod hata kodu ve hata sebebini temsil eder:
 writeUInt16LE(0, 6);
 writeUInt32LE(0, 8);
 ```
+---
+
+## Fotoğraflar
+
+![image](https://github.com/user-attachments/assets/6a7d0399-903a-4a46-a351-87d4134ddadc)
+
+![image](https://github.com/user-attachments/assets/e4b7d274-dc3c-429a-a6b3-06b3df667ef2)
+

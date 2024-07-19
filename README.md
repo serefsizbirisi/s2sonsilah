@@ -67,6 +67,6 @@ Kullanıcı adı veya şifre yanlış girildiğinde aşağıdaki hata mesajını
 ---
 ## Lisans
 
-MIT lisansı altında lisanslıdır, daha fazla bilgi için KOPYALAMA konusuna bakın.
+MIT lisansı altında lisanslıdır, daha fazla bilgi için LICENSE konusuna bakın.
 
 Bu projenin Joygame ile bağlantısı yoktur. S2 Son Silah bu şirkete aittir.

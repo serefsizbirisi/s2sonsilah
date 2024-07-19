@@ -63,3 +63,10 @@ Kullanıcı adı veya şifre yanlış girildiğinde aşağıdaki hata mesajını
 ![image](https://github.com/user-attachments/assets/e4b7d274-dc3c-429a-a6b3-06b3df667ef2)
 
 ![image](https://github.com/user-attachments/assets/2d8a4435-1403-4e4d-8f70-66054d31276e)
+
+---
+## Lisans
+
+**"MIT lisansı altında lisanslıdır, daha fazla bilgi için KOPYALAMA konusuna bakın.
+
+Bu projenin Joygame ile bağlantısı yoktur. S2 Son Silah bu şirkete aittir."**

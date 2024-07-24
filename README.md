@@ -54,6 +54,7 @@ Bu iki satır kod hata kodu ve hata sebebini temsil eder:
 writeUInt16LE(0, 6);
 writeUInt32LE(0, 8);
 ```
+**Giriş Başarısız:** 0x210102
 ---
 
 ## Fotoğraflar

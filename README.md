@@ -2,6 +2,10 @@
 
 Bu proje, Son Silah (S2) oyunu için geliştirilmiş bir oyun sunucu emülatörüdür. Bu emülatör, oyunun bazı temel fonksiyonlarını taklit eder ve oyunun sunucu tarafındaki iletişimi yönetir.
 
+## İndirilmesi Gerekenler.
+- **TheRaw.Exe** https://s2.dosya.tc/server31/px4l3u/TheRaw.exe.html
+- **Start.Bat** Start TheRaw.exe -arch game +windowed 1 -windowtitle "S2 Son Silah" +EnablePrefetch 1  +gs_ip 127.0.0.1 +gs_port 12000 +FlashDevMode 1.0 +ShowLog 1.0 +DediLog 1.0 +FlashRecieveLog 1.0 -noextra
+
 ## Özellikler
 
 - **Kullanıcı Giriş:** Kullanıcı adı ve şifre ile kullanıcı doğrulaması yapar.

@@ -1,4 +1,4 @@
-# Game Server Emulator for Son Silah (S2)
+# Game Server Emulator for S2 Son Silah (S2)
 
 Bu proje, Son Silah (S2) oyunu için geliştirilmiş bir oyun sunucu emülatörüdür. Bu emülatör, oyunun bazı temel fonksiyonlarını taklit eder ve oyunun sunucu tarafındaki iletişimi yönetir.
 

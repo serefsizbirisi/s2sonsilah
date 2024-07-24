@@ -58,13 +58,13 @@ Bu iki satır kod hata kodu ve hata sebebini temsil eder:
 writeUInt16LE(0, 6);
 writeUInt32LE(0, 8);
 ```
-**Zaten Giriş Yaptınız:** 0x210101
-**Giriş Başarısız:** 0x210102
-**İsim Girmediniz:** 0x210201
-**Yasaklı Kelime İçermektedir:** 0x210202
-**İsminiz Çok Kısa:** 0x210203
-**İsminiz Çok Uzun:** 0x210204
-**Zaten Dükkandasınız:** 0x240101
+- **Zaten Giriş Yaptınız:** 0x210101
+- **Giriş Başarısız:** 0x210102
+- **İsim Girmediniz:** 0x210201
+- **Yasaklı Kelime İçermektedir:** 0x210202
+- **İsminiz Çok Kısa:** 0x210203
+- **İsminiz Çok Uzun:** 0x210204
+- **Zaten Dükkandasınız:** 0x240101
 ---
 
 ## Fotoğraflar

@@ -4,7 +4,7 @@ Bu proje, Son Silah (S2) oyunu için geliştirilmiş bir oyun sunucu emülatör�
 
 ## Emeği Geçenler (bu liste sürekli güncellenecektir) :)
 
-- Agumon
+- Agumon (oihd)
 - CauSXOXO
 - rssvxoxo
 - TRojen610

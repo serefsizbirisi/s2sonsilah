@@ -2,6 +2,10 @@
 
 Bu proje, Son Silah (S2) oyunu için geliştirilmiş bir oyun sunucu emülatörüdür. Bu emülatör, oyunun bazı temel fonksiyonlarını taklit eder ve oyunun sunucu tarafındaki iletişimi yönetir.
 
+## Yakında Gelecek Olan Update Hakkında Kısa Bilgi.
+- artık server seçilebiliyor.
+- artık kanal seçilebiliyor.
+
 ## Emeği Geçenler (bu liste sürekli güncellenecektir) :)
 
 - Agumon (oihd)

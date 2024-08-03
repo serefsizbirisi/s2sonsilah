@@ -6,6 +6,7 @@ Bu proje, Son Silah (S2) oyunu için geliştirilmiş bir oyun sunucu emülatör�
 - artık server seçilebiliyor.
 - artık kanal seçilebiliyor.
 - artık oda açılabiliyor.
+- artık ölme / öldürme / kazanma / kaybetme / berabere / rank icon / rank sırası / tp puanı çalışıyor
 
 ## Emeği Geçenler (bu liste sürekli güncellenecektir) :)
 

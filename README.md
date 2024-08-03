@@ -5,6 +5,7 @@ Bu proje, Son Silah (S2) oyunu için geliştirilmiş bir oyun sunucu emülatör�
 ## Yakında Gelecek Olan Update Hakkında Kısa Bilgi.
 - artık server seçilebiliyor.
 - artık kanal seçilebiliyor.
+- artık oda açılabiliyor.
 
 ## Emeği Geçenler (bu liste sürekli güncellenecektir) :)
 

@@ -89,6 +89,11 @@ Kullanıcı adı veya şifre yanlış girildiğinde aşağıdaki hata mesajını
 
 ![image](https://github.com/user-attachments/assets/6a4e9f86-e6bc-4f94-af8b-42c90f6eed13)
 
+![image](https://github.com/user-attachments/assets/5b76a785-3397-40b6-871c-1a2cc440c285)
+
+![image](https://github.com/user-attachments/assets/7ec26525-1155-4738-a346-80a96fb78ae1)
+
+
 
 ---
 ## Lisans

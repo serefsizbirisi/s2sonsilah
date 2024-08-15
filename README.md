@@ -2,12 +2,14 @@
 
 Bu proje, Son Silah (S2) oyunu için geliştirilmiş bir oyun sunucu emülatörüdür. Bu emülatör, oyunun bazı temel fonksiyonlarını taklit eder ve oyunun sunucu tarafındaki iletişimi yönetir.
 
-## Yakında Gelecek Olan Update Hakkında Kısa Bilgi.
-- artık server seçilebiliyor.
-- artık kanal seçilebiliyor.
-- artık oda açılabiliyor.
-- artık ölme / öldürme / kazanma / kaybetme / berabere / rank icon / rank sırası / tp puanı çalışıyor
-
+## Serveri Çalıştırmak İçin Yapılması Gerekenler.
+- therawserver'in çalışması için oyunun dosyalarını çıkartmanız gerekiyor
+- oyunun dosyalarını çıkartmak için Game Klasörüne ArchiveExtractor.exe Atıyorsunuz ve o klasör de olan Game.Res00 dosyasını ArchiveExtractor.exe üzerine sürükleyerek bırakıyorsunuz. dosyalar çıktıktan sonra Extracted klasörün içinde oluyor klasöre girip ctrl-a yap sağ tık yap sonra kes yazısına bas. sonra geri gelip ctrl-v tusuna bas bu kadar.
+- geri gelip Default.archcfg dosyasını editliyorsunuz ve içideki herşeyi silip sadece Game yazıyorsunuz.
+- bu verdiğim [game.rar](https://s6.dosya.tc/server21/eibrvk/Game.rar.html)'ı indir aç içinde verdiğim GameClient.dll GameServer.dll şu iki dosyayı game klasörüne at.
+- [s2.rar](https://s2.dosya.tc/server31/ldi0p0/s2.rar.html) bu indir aç bunun içindekileri direkt theraw.exe'nin olduğu dizine atın.
+- sonra LaunchServer.bat çalıştırın sonra Shell.exe çalıştırın sonra hooks.ct açın (cheat engine) kurulu olması lazım. cheat engine ekranı geldiğinde therawserver.exeyi seçip listedekli kutulara tıklamanız lazım.
+- sonra lobi.js serveri başlatın therawserver.exe direkt bağlanacaktır. (sonrasında login.js serveri başlatabilirsiniz.)
 ## Emeği Geçenler (bu liste sürekli güncellenecektir) :)
 
 - Agumon (oihd)
@@ -24,13 +26,12 @@ Bu proje, Son Silah (S2) oyunu için geliştirilmiş bir oyun sunucu emülatör�
 
 - **Kullanıcı Giriş:** Kullanıcı adı ve şifre ile kullanıcı doğrulaması yapar.
 - **Sunucu Listesi:** Bağlanılabilir sunucuların listesini sağlar.
-- **Komut Satırı Kontrolü:** Sunucuyu komut satırından yönetebilmek için konsol komutları sağlar.
+- **Channel Listesi:** Bağlanılabilir kanalların listesini sağlar.
 
 ## Bağımlılıklar
 
 - Node.js
 - uuid
-- winston
 
 ## Başlatma
 
@@ -41,9 +42,13 @@ Sunucuyu başlatmak için aşağıdaki adımları izleyin:
     npm install
     ```
 
-2. Sunucuyu başlatın:
+2. Login Serveri başlatın:
     ```bash
-    node server.js
+    node login.js
+    ```
+2. Lobi Serveri başlatın:
+    ```bash
+    node lobi.js
     ```
 
 ## Proje Yapısı

@@ -50,18 +50,6 @@ Sunucuyu başlatmak için aşağıdaki adımları izleyin:
     ```bash
     node lobi.js
     ```
-
-## Proje Yapısı
-
-- `Packet` sınıfı: Gelen veri paketlerini işler.
-- `GameServer` sınıfı: Sunucu bağlantılarını yönetir ve gelen verileri işler.
-- `GameClient` sınıfı: Bağlı olan istemciyi temsil eder.
-- `GameDatabase` sınıfı: Kullanıcı doğrulamasını yapar ve kullanıcı bilgilerini yönetir.
-
-## Komutlar
-
-- `userlist`: Bağlı olan kullanıcıların listesini gösterir.
-
 ---
 
 ## Önemli Notlar

@@ -110,27 +110,36 @@ class Game {
         send_packet(socket, packet);
     }
 
+    async tPacket_NMatchup_NChannel_SN_ChannelList(socket) {
+        const packet = IDefaultGamePacket.init(this.getNextSequence(), 2228482);
+        const payload = Buffer.alloc(512);
+        let offset = 1;
+        const serverCount = 1;
+        
+        payload.writeUInt16LE(serverCount, offset);
+        offset += 6;
+        for (let i = 0; i < serverCount; i++) {
+            offset += 13;
+            payload[offset++] = 0x00;
+            offset += payload.write(`Kanal ${i + 1}`, offset, 'utf8');
+            payload[offset++] = 0x00;
+            payload.writeUInt16LE(12000, offset);
+            offset += 2;
+            offset += 4;
+            offset += payload.write(`Server ${i + 1}`, offset, 'utf8');
+            payload[offset++] = 0x00;
+            offset += 68;
+        }
+        packet.pushBuffer(payload.slice(0, offset));
+        send_packet(socket, packet);
+    }
+
+
     async send_NLock_SN_LockEnd(socket) {
         const packet = IDefaultGamePacket.init(this.getNextSequence(), 2162977);
         const payload = Buffer.alloc(8);
         payload.writeInt16LE(0, 0); // error code
         payload.writeInt32LE(0, 2); // error reason
-        packet.pushBuffer(payload);
-        send_packet(socket, packet);
-    }
-
-    async send_NLock_SN_Record(socket, tpPercentage = 100) {
-        const packet = IDefaultGamePacket.init(this.getNextSequence(), 2162961);
-        const payload = Buffer.alloc(112);
-        const values = [2111099, 1110099, 1140099, 1210099, 1310099, 1410099, 2111099, 0];
-        payload.writeUint8(values.length, 1);
-        let offset = 2;
-        values.forEach(value => {
-            payload.writeInt32LE(value, offset);
-            offset += 4;
-        });
-        payload.writeInt32LE(0x38, offset); offset += 4;
-        payload.writeInt32LE(0x40, offset);
         packet.pushBuffer(payload);
         send_packet(socket, packet);
     }
@@ -189,7 +198,7 @@ class Game {
         console.log("Inventory info sent");
     }
 	
-	async send_NLock_SN_Record(socket, tpPercentage = 100) {
+	async send_NLock_SN_Record(socket, tpPercentage = 50) {
         const packet = IDefaultGamePacket.init(this.getNextSequence(), 2162947);
         const payload = Buffer.alloc(112);  // 128 - 16 (header size)
     
@@ -223,12 +232,14 @@ class Game {
     async sendLogin(socket) {
         await this.send_NIdentity_SA_JoyGameLogin(socket);
         await this.send_NLock_SN_UserInfo(socket);
+        await this.send_NLock_SN_Record(socket);
         await this.send_NChannel_SN_ServerList(socket);
         await this.send_NChannel_SN_ServerInfo(socket);
+        await this.tPacket_NMatchup_NChannel_SN_ChannelList(socket);
         await this.send_NLock_SN_LockEnd(socket);
 		await this.send_NMatchup_NPlay_SN_ItemList(socket);
 		await this.send_NMatchup_NPlay_SN_Inventory(socket);
-        await this.send_NLock_SN_Record(socket);
+        
     }
 }
 

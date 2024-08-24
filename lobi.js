@@ -38,11 +38,11 @@ class Game {
         return this.sequence++;
     }
 
-    async send_NChannel_SN_ChannelSelect(socket) {
+    async tPacket_NMatchup_NChannel_SA_EnterUser(socket) {
         const packet = IDefaultGamePacket.init(this.getNextSequence(), 2228498);
         const payload = Buffer.alloc(512);
         let offset = 1;
-        const serverCount = 1;
+        const serverCount = 2;
         
         payload.writeUInt16LE(serverCount, offset);
         offset += 6;
@@ -92,27 +92,12 @@ class Game {
     async send_NHangar_NEquipment_SA_Open(socket) {
         const packet = IDefaultGamePacket.init(this.getNextSequence(), 2359554);
         const payload = Buffer.alloc(24);  // Adjust the size as needed
-        payload.writeInt16LE(0, 0); // error code
-        payload.writeInt32LE(0, 2); // error reason
-		payload.writeUInt8(0, 3);
-		payload.writeUInt8(0, 4);
-		payload.writeUInt8(0, 5);
-		payload.writeUInt8(1, 6);
-		payload.writeUInt8(2, 7);
-		payload.writeUInt8(3, 8);
-		payload.writeUInt8(4, 9);
-		payload.writeUInt8(5, 10);
-		payload.writeUInt8(3, 11);
-		payload.writeUInt8(3, 0x11);
-		payload.writeUInt8(6, 13);
-		payload.writeUInt8(7, 14);
-		payload.writeUInt8(8, 15);
-		payload.writeUInt8(9, 16);
-		payload.writeUInt8(10, 17);
-		payload.writeUInt8(11, 18);
-		payload.writeUInt8(12, 19);
-		payload.writeUInt8(13, 20);
-
+        payload.writeInt16LE(0x0, 0); // error code
+        payload.writeInt32LE(0x0, 2); // error reason
+		payload.writeUInt8(0x0, 3);
+		payload.writeUInt8(0x0, 4);
+		payload.writeUInt8(0x0, 5);
+        payload.writeUInt8(0x1E, 6);
         packet.pushBuffer(payload);
         send_packet(socket, packet);
     }
@@ -152,6 +137,43 @@ class Game {
         snInfo_body.writeInt8(roomInfo.maxPlayers, 0x1A - xOffset);
 
         // Experimenting with other field positions
+        snInfo_body.writeInt32LE(roomInfo.mapID, 0x1E - xOffset);
+        snInfo_body.writeInt8(roomInfo.gameMode, 0x1B - xOffset);
+        snInfo_body.writeInt8(roomInfo.currentPlayers, 0x1C - xOffset);
+        snInfo_body.writeInt8(roomInfo.gameType, 0x1F - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.objective, 0x1D - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.duration, 0x17 - xOffset);
+        
+        // Adding more experimental data
+        snInfo_body.writeInt32LE(roomInfo.experiData1, 0x2B - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData2, 0x2F - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData3, 0x21 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData4, 0x33 - xOffset);
+        snInfo_body.writeInt32LE(roomInfo.experiData5, 0X44 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData6, 0x55 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData7, 0x39 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData8, 0x3A - xOffset);
+        snInfo_body.writeInt32LE(roomInfo.experiData9, 0x3B - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData10, 0x3F - xOffset);
+
+        snInfo_body.write(roomInfo.roomName, 0x41 - xOffset, roomInfo.roomName.length, 'utf8');
+        
+        packet.pushBuffer(snInfo_body);
+        send_packet(socket, packet);
+    }
+
+    async tPacket_NMatchup_NPlay_SN_BaseRoomInfo(socket, roomInfo) {
+        const packet = IDefaultGamePacket.init(this.getNextSequence(), 2236689);
+        const snInfo_body = Buffer.alloc(512);
+        snInfo_body.fill(0);
+       
+        const xOffset = 16;  // Assuming xOffset is 16 based on previous examples
+   
+        // Keeping the working fields in their original positions
+        snInfo_body.writeInt8(roomInfo.roomType, 0x16 - xOffset);
+        snInfo_body.writeInt8(roomInfo.maxPlayers, 0x1A - xOffset);
+
+        // Experimenting with other field positions
         snInfo_body.writeInt32LE(roomInfo.mapID, 0x20 - xOffset);
         snInfo_body.writeInt8(roomInfo.gameMode, 0x24 - xOffset);
         snInfo_body.writeInt8(roomInfo.currentPlayers, 0x25 - xOffset);
@@ -177,19 +199,126 @@ class Game {
         send_packet(socket, packet);
     }
 
-    async send_NRoom_SA_EnterUser(socket) {
-        const packet = IDefaultGamePacket.init(this.getNextSequence(), 2228740);
-        const payload = Buffer.alloc(8);
-        payload.writeInt16LE(0, 0); // error code
-        payload.writeInt32LE(0, 2); // error reason
-        packet.pushBuffer(payload);
+    async tPacket_NMatchup_NPlay_SN_BaseUserList(socket, roomInfo) {
+        const packet = IDefaultGamePacket.init(this.getNextSequence(), 2236690);
+        const snInfo_body = Buffer.alloc(512);
+        snInfo_body.fill(0);
+       
+        const xOffset = 16;  // Assuming xOffset is 16 based on previous examples
+   
+        // Keeping the working fields in their original positions
+        snInfo_body.writeInt8(roomInfo.roomType, 0x16 - xOffset);
+        snInfo_body.writeInt8(roomInfo.maxPlayers, 0x1A - xOffset);
+
+        // Experimenting with other field positions
+        snInfo_body.writeInt32LE(roomInfo.mapID, 0x20 - xOffset);
+        snInfo_body.writeInt8(roomInfo.gameMode, 0x24 - xOffset);
+        snInfo_body.writeInt8(roomInfo.currentPlayers, 0x25 - xOffset);
+        snInfo_body.writeInt8(roomInfo.gameType, 0x26 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.objective, 0x27 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.duration, 0x29 - xOffset);
+        
+        // Adding more experimental data
+        snInfo_body.writeInt32LE(roomInfo.experiData1, 0x2B - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData2, 0x2F - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData3, 0x31 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData4, 0x32 - xOffset);
+        snInfo_body.writeInt32LE(roomInfo.experiData5, 0x33 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData6, 0x37 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData7, 0x39 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData8, 0x3A - xOffset);
+        snInfo_body.writeInt32LE(roomInfo.experiData9, 0x3B - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData10, 0x3F - xOffset);
+
+        snInfo_body.write(roomInfo.roomName, 0x41 - xOffset, roomInfo.roomName.length, 'utf8');
+        
+        packet.pushBuffer(snInfo_body);
         send_packet(socket, packet);
     }
+
+    async tPacket_NMatchup_NPlay_SN_BattleInfo(socket, roomInfo) {
+        const packet = IDefaultGamePacket.init(this.getNextSequence(), 2236692);
+        const snInfo_body = Buffer.alloc(512);
+        snInfo_body.fill(0);
+       
+        const xOffset = 16;  // Assuming xOffset is 16 based on previous examples
+   
+        // Keeping the working fields in their original positions
+        snInfo_body.writeInt8(roomInfo.roomType, 0x16 - xOffset);
+        snInfo_body.writeInt8(roomInfo.maxPlayers, 0x1A - xOffset);
+
+        // Experimenting with other field positions
+        snInfo_body.writeInt32LE(roomInfo.mapID, 0x20 - xOffset);
+        snInfo_body.writeInt8(roomInfo.gameMode, 0x24 - xOffset);
+        snInfo_body.writeInt8(roomInfo.currentPlayers, 0x25 - xOffset);
+        snInfo_body.writeInt8(roomInfo.gameType, 0x26 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.objective, 0x27 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.duration, 0x29 - xOffset);
+        
+        // Adding more experimental data
+        snInfo_body.writeInt32LE(roomInfo.experiData1, 0x2B - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData2, 0x2F - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData3, 0x31 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData4, 0x32 - xOffset);
+        snInfo_body.writeInt32LE(roomInfo.experiData5, 0x33 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData6, 0x37 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData7, 0x39 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData8, 0x3A - xOffset);
+        snInfo_body.writeInt32LE(roomInfo.experiData9, 0x3B - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData10, 0x3F - xOffset);
+
+        snInfo_body.write(roomInfo.roomName, 0x41 - xOffset, roomInfo.roomName.length, 'utf8');
+        
+        packet.pushBuffer(snInfo_body);
+        send_packet(socket, packet);
+    }
+
+    async tPacket_NMatchup_NRoom_SN_UserList(socket, roomInfo) {
+        const packet = IDefaultGamePacket.init(this.getNextSequence(), 2228787);
+        const snInfo_body = Buffer.alloc(512);
+        snInfo_body.fill(0);
+       
+        const xOffset = 16;  // Assuming xOffset is 16 based on previous examples
+   
+        // Keeping the working fields in their original positions
+        snInfo_body.writeInt8(roomInfo.roomType, 0x16 - xOffset);
+        snInfo_body.writeInt8(roomInfo.maxPlayers, 0x1A - xOffset);
+
+        // Experimenting with other field positions
+        snInfo_body.writeInt32LE(roomInfo.mapID, 0x20 - xOffset);
+        snInfo_body.writeInt8(roomInfo.gameMode, 0x24 - xOffset);
+        snInfo_body.writeInt8(roomInfo.currentPlayers, 0x25 - xOffset);
+        snInfo_body.writeInt8(roomInfo.gameType, 0x26 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.objective, 0x27 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.duration, 0x29 - xOffset);
+        
+        // Adding more experimental data
+        snInfo_body.writeInt32LE(roomInfo.experiData1, 0x2B - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData2, 0x2F - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData3, 0x31 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData4, 0x32 - xOffset);
+        snInfo_body.writeInt32LE(roomInfo.experiData5, 0x33 - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData6, 0x37 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData7, 0x39 - xOffset);
+        snInfo_body.writeInt8(roomInfo.experiData8, 0x3A - xOffset);
+        snInfo_body.writeInt32LE(roomInfo.experiData9, 0x3B - xOffset);
+        snInfo_body.writeInt16LE(roomInfo.experiData10, 0x3F - xOffset);
+
+        snInfo_body.write(roomInfo.roomName, 0x41 - xOffset, roomInfo.roomName.length, 'utf8');
+        
+        packet.pushBuffer(snInfo_body);
+        send_packet(socket, packet);
+    }
+
+    
 
     async sendRoom(socket, roomInfo) {
         await this.send_NRoom_SA_Create(null, socket);
         await this.send_NRoom_SN_Info(socket, roomInfo);
-        //await this.send_NRoom_SA_EnterUser(socket);
+        await this.tPacket_NMatchup_NPlay_SN_BaseRoomInfo(socket, roomInfo);
+        await this.tPacket_NMatchup_NPlay_SN_BaseUserList(socket, roomInfo);
+        await this.tPacket_NMatchup_NPlay_SN_BattleInfo(socket, roomInfo);
+        await this.tPacket_NMatchup_NRoom_SN_UserList(socket, roomInfo);
     }
 	
 	async send_NHangar_NEquipment_SA_ChangePart(socket) {
@@ -264,17 +393,40 @@ class Game {
         send_packet(socket, packet);
         console.log("Use Item response sent");
     }
+
+    async tPacket_NAccount_NIdentity_SA_Join(socket) {
+        const packet = IDefaultGamePacket.init(this.getNextSequence(), 1114405);
+        const payload = Buffer.alloc(52);
+        let offset = 1;
+        const serverCount = 1;
+        payload.writeInt16LE(0, 0);  // Error code (0 for success)
+        payload.writeInt32LE(0, 2);  // Error reason (0 for no error)
+        payload.writeUInt16LE(serverCount, offset);
+        offset += 6;
+        for (let i = 0; i < serverCount; i++) {
+            offset += 4;
+            payload[offset++] = 0x00;
+            payload[offset++] = 0x00;
+            offset += 30;
+        }
+        packet.pushBuffer(payload);
+        send_packet(socket, packet);
+    }
 }
 
 const game = new Game();
-
+let counter = 4
 function handleIncomingData(socket, data) {
     const opCode = data.readInt32LE(12);
 
     switch (opCode) {
         case 2228497:
             console.log("Channel Select Req");
-            game.send_NChannel_SN_ChannelSelect(socket);
+            game.tPacket_NMatchup_NChannel_SA_EnterUser(socket);
+            break;
+        case 1114404:
+            console.log("server Select okeyleme");
+            game.tPacket_NAccount_NIdentity_SA_Join(socket);
             break;
 		case 4325896:  // New host-related request
             console.log("Host-related request received");
@@ -331,12 +483,12 @@ function handleIncomingData(socket, data) {
                 console.error('Error sending Cash Buy response:', error);
             });
             break;
-        case 2229012:
+        /*case 2229012:
             console.log("team change");
             game.send_NHosting_NGuest_SN_HostConnect(socket);
-            break;
+            break;*/
         case 2229521:
-            console.log("team change");
+            console.log("wiper");
             game.send_NHosting_NGuest_SN_HostConnect(socket);
             break;
         case 2228737:
@@ -367,6 +519,24 @@ function handleIncomingData(socket, data) {
                 console.error('Error sending room creation packets:', error);
             });
             break;
+            /*case 2228737:
+                data.writeUInt16LE(3, 4);
+                data.writeUInt32LE(2228739, 12);
+                data.writeInt8(3, 0x16, 16);
+                data.writeInt8(2, 0x1A, 17);
+                data.writeInt8(2, 0x1B, 17);
+                data.writeInt8(2, 0x1C, 17);
+                data.writeInt8(2, 0x1E, 17);
+                console.log(data.toString('hex'));
+                socket.write(data);
+                break;*/
+            case 2229012:
+                data.writeUInt16LE(counter, 4);
+                data.writeUInt32LE(2229011, 12);
+                console.log(data.toString('hex'));
+                socket.write(data);
+                counter++;
+                break;
         default:
             console.log(`Unknown packet opcode: ${opCode}`);
             break;

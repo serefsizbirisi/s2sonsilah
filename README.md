@@ -1,5 +1,6 @@
 # Game Server Emulator for Last Weapon (S2)
 [DİSCORD](https://discord.com/invite/pzXH2mGT)
+
 [Click here for Turkish version / Türkçe versiyon için buraya tıklayın](#son-silah-s2-için-oyun-sunucusu-emülatörü)
 
 This project is a game server emulator developed for the Last Weapon (S2) game. This emulator mimics some of the basic functions of the game and manages the server-side communication of the game.
